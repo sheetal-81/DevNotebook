@@ -1,0 +1,34 @@
+body {
+        background-color: red; /* Fallback for browsers that do not support gradients */
+        background-image: linear-gradient(to bottom right, #F5F5F5, #BEBFC5);
+    }
+    
+
+h2 {
+        color: #000000;
+        text-align: justify;
+        padding: 70px;
+       
+}
+.nav-link
+{
+        color: aqua;
+}
+
+#carouselExampleControls {
+        width: 70%; /* Set a fixed width */
+        height: 30%; /* Set a fixed height */
+        margin: auto; /* Center the carousel */
+      }
+  
+      /* Customizing the images */
+      .carousel-inner img {
+        object-fit: cover; /* Ensure the images cover the entire carousel */
+        width: 100%; /* Make sure the images fill the carousel */
+        height: 100%; /* Make sure the images fill the carousel */
+      }
+  
+      /* Customizing the indicators */
+      .carousel-indicators li {
+        background-color: black; /* Set the color of the indicators to black */
+      }
