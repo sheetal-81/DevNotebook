@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+            <br><br>
+    <div class="container mt-5" style="display: flex; justify-content: center;">
+        <div class="row" style="border: 3px solid black; border-radius: 15px; padding: 50px; width: 90%; height: 95%;">
+            <div class="col-md-4 d-flex align-items-center justify-content-center" style="padding: 0;">
+                <img src="upload.png" alt="Placeholder Image" class="img-fluid rounded" style="height: 100%; max-height: 300px;">
+            </div>
+            <div class="col-md-8">
+                <h2 class="text-center"><u>Upload Your File</u></h2><br><br>
+                <form id="uploadForm" enctype="multipart/form-data">
+                        <br>
+                    <div class="form-group">
+                        <label for="fileInput"><b>Choose file to upload </b></label> 
+                        <input type="file" class="form-control-file" id="fileInput" name="file">
+                    </div>
+                    <br> <br>
+                    <div class="btn-group" role="group" aria-label="File management buttons" style="width: 100%;">
+                        <button type="submit" class="btn btn-primary btn-md">Upload</button>
+                        <button type="button" class="btn btn-danger btn-md ml-2" id="deleteButton">Delete</button>
+                        <button type="button" class="btn btn-warning btn-md ml-2" id="editButton">Edit</button>
+                    </div>
+                </form>
+                <div id="uploadResult" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap and jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('uploadResult').innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+            })
+            .catch(error => {
+                document.getElementById('uploadResult').innerHTML = `<div class="alert alert-danger">Error uploading file</div>`;
+            });
+        });
+
+        document.getElementById('deleteButton').addEventListener('click', function() {
+            alert('Delete functionality to be implemented.');
+        });
+
+        document.getElementById('editButton').addEventListener('click', function() {
+            alert('Edit functionality to be implemented.');
+        });
+    </script>
+</body>
+</html>
